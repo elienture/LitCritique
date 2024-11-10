@@ -19,6 +19,20 @@ export const initialReviews = [
         author: "J.D. Salinger",
         description: 'Catcher in the Rye was quite a disappointing read. The constant use of profanity by the protagonist felt excessive and unnecessary to the story. Although the inclusion of vulgar language and some mild «adult»  themes do reflect Holden Caulfield’s (main character) angst and introduction to new experiences as a teenage boy, his behaviour and overall personality come across as forced and juvenile, making the novel hard to enjoy.',
         rating: 2
+    },
+    {
+        name: "Pride and Prejudice",
+        image: "https://www.gutenberg.org/files/1342/1342-h/images/cover.jpg",
+        author: "Jane Austen",
+        description: "Pride and Prejudice is a timeless classic, which explores both romance and principles. The novel highlights themes such as social class, gender roles, and the pursuit of love - issues that resonate with us to this day. For instance, Elizabeth Bennet's struggle with societal expectations mirrors discussions about independence that take place nowadays. The witty dialogue and sharp social commentary keep the narrative engaging and relevant. Austen beautifully depicts the slow burn romance between Elizabeth and Mr. Darcy, expanding their growth as individuals and as a couple. Their initial resentment and continuous misunderstandings give way to mutual respect and deep affection, making their relationship feel genuine. Overall, Pride and Prejudice isn’t just a magnificent love story, but also an outlook to self-reflection, human behaviour and reaction to societal norms that endure through time.",
+        rating: 5
+    },
+    {
+        name: "War and Peace",
+        image: "https://www.gutenberg.org/files/2600/2600-h/images/cover.jpg",
+        author: "Leo Tolstoy",
+        description: "«War and Peace» by Leo Tolstoy is one of the most monumental works in Russian literature. It thoroughly depicts the lives of people during the Napoleonic Wars. The novel excels in its rich historical context and character development. Tolstoy’s ability to capture the just how complex the human nature is provides an insightful glimpse into the struggles of the era, especially when intertwined with the chaos of war. Nevertheless, the novel’s length can be intimidating to many readers, especially those who are just introducing themselves to Russian classics. The relentless focus on war and its horrors can also be excruciating - there were many times where I had to put the book down for a moment just to be rid of the «mind haze» that the novel presents.",
+        rating: 3
     }
 ]
 
