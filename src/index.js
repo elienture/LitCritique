@@ -160,6 +160,14 @@ reviewForm.addEventListener("submit", (event) => {
   reviewForm.reset(); // Ресет формы после закрытия
 });
 
+window.onload = () => {
+  // Ждем полной загрузки страницы с помощью обработчика onload
+  const reviewStorage = JSON.parse(localStorage.getItem("reviews")) || []; // Если данных нет, возвращаем пустой массив
+  reviewStorage.forEach(({ name, description, image, author, rating }) => {
+    createReview(name, description, image, author, rating);
+  });
+};
+
 // Ресет рейтинга в форме
 function resetRating() {
   starRate = 0;

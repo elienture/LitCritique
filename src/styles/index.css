@@ -1,17 +1,19 @@
 @import url("../fonts/fonts.css");
 
-body {
-  margin: 0;
+.page {
+  background-color: #006c5e;
+  box-sizing: border-box;
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
   max-width: 1440px;
 }
 
-.page {
-  background-color: #006c5e;
-}
-
-.header {
+.borderline {
+  display: block;
+  width: 100%;
   border-bottom: solid 3px black;
-  
+  margin-top: 10px;
 }
 
 .title {
@@ -32,7 +34,9 @@ body {
 
 .add_button {
   font-family: "YesevaOne", sans-serif;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -85,9 +89,9 @@ body {
   transform: translateX(-50%);
   border: solid 2px white;
   background-color: black;
-  padding: 20px 30px 20px 30px;
+  padding: 20px 30px;
   width: 400px;
-  height: 400px;
+  height: auto;
 }
 
 .modal.active .modal-form {
@@ -120,6 +124,7 @@ body {
 
 .input {
   font-family: "YesevaOne", sans-serif;
+  font-size: 14px;
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -171,7 +176,7 @@ body {
 .reviews_list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 270px;
+  gap: 100px;
   margin: 50px 150px;
   padding: 0;
 }
@@ -309,4 +314,71 @@ body {
 
 .star.selected {
   color: white;
+}
+
+/* Медиазапросы */
+
+@media (max-width: 1440px) and (min-width: 675px) {
+  .reviews_list {
+    margin: 5vh auto;
+    max-width: 1200px;
+  }
+
+  .review_box {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 675px) and (min-width: 375px) {
+  .review_box {
+    margin: 0 auto;
+  }
+
+  .reviews_list {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 50px;
+    margin: 5vh auto;
+  }
+
+  .title {
+    font-size: 64px;
+  }
+
+  .modal-form {
+    width: 325px;
+  }
+
+  .submit_button {
+    margin-top: 15px;
+  }
+
+  .review_box {
+    width: 350px;
+    height: 550px;
+  }
+
+  .input {
+    font-size: 12px;
+  }
+
+  .input_author {
+    width: 100px;
+  }
+}
+
+@media (max-width: 430px) {
+  .modal-form {
+    width: calc(100% - 75px);
+    padding: 15px;
+  }
+
+  .close_button {
+    top: -30px;
+    right: -25px;
+    font-size: 18px;
+  }
+
+  .book_info {
+    gap: 0;
+  }
 }
