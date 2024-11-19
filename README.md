@@ -5,6 +5,14 @@
 ## Репозиторий проекта
 https://github.com/elienture/LitCritique
 
+## Сборка
+```
+npm run build
+```
+
+## Деплой проекта 
+https://elienture.github.io/LitCritique/
+
 ## Технологии
 - HTML5
 - CSS
