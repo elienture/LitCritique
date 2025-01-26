@@ -24,7 +24,7 @@
   padding-top: 40px;
 }
 
-/* Оформление секции добавления новой рецензии (модальное окно и кнопка) */
+/* adding section (modal and button) */
 
 .adding_content {
   display: flex;
@@ -120,7 +120,7 @@
   transform: scale(1.1);
 }
 
-/* Оформление инпутов */
+/* inputs */
 
 .input {
   font-family: "YesevaOne", sans-serif;
@@ -171,7 +171,7 @@
   margin-top: 25px;
 }
 
-/* Оформление контейнера с рецензией */
+/* review section */
 
 .reviews_list {
   display: grid;
@@ -269,7 +269,7 @@
   font-size: 16px;
 }
 
-/* Кнопки переворачивания карточки с рецензией */
+/* review card flip */
 
 .flip_button_front,
 .flip_button_back {
@@ -291,7 +291,7 @@
 }
 
 /********************************/
-/*      Оформление рейтинга     */
+/*         star rating          */
 /********************************/
 
 .rating {
@@ -316,7 +316,7 @@
   color: white;
 }
 
-/* Медиазапросы */
+/* media queries */
 
 @media (max-width: 1440px) and (min-width: 675px) {
   .reviews_list {

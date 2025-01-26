@@ -1,23 +1,23 @@
 import "./styles/index.css";
 import { initialReviews } from "./reviews";
 
-const reviewForm = document.getElementById("reviewForm"); // форма для заполнения ревью
-const closeButton = document.getElementById("closeButton"); // кнопка закрытия формы
-const addButton = document.getElementById("addButton"); // кнопка добавления
-const formModal = document.getElementById("formModal"); // модальное окно формы
-const reviewTemplate = document.getElementById("review").content; // шаблон ревью
-const reviewsList = document.querySelector(".reviews_list"); // контейнер для ревью
+const reviewForm = document.getElementById("reviewForm"); // review form
+const closeButton = document.getElementById("closeButton"); // form close button
+const addButton = document.getElementById("addButton"); // add review button
+const formModal = document.getElementById("formModal"); // form modal
+const reviewTemplate = document.getElementById("review").content; // review template
+const reviewsList = document.querySelector(".reviews_list"); // review section
 const ratingStars = document.querySelectorAll(".star");
-let starRate = 0; // инициация переменной рейтинга
+let starRate = 0; // initial rating variable
 
-// Добавление ревью из initialReviews
+// display reviews from initialReviews array
 function addReview(item) {
   reviewsList.append(getCard(item));
 }
 
 initialReviews.forEach((item) => addReview(item));
 
-// Функция рейтинга ревью
+// rating function
 function rateStars(ratingStars, item) {
   ratingStars.forEach((star, index) => {
     if (index < item.rating) {
@@ -51,21 +51,21 @@ function rateStars(ratingStars, item) {
   });
 }
 
-// Функция переворачивания карточки ревью
+// flipping review card function
 function reviewFlip(reviewItem) {
   const buttonFront = reviewItem.querySelector(".flip_button_front");
-  const buttonBack = reviewItem.querySelector(".flip_button_back"); // Кнопка на задней стороне
+  const buttonBack = reviewItem.querySelector(".flip_button_back"); 
 
   buttonFront.addEventListener("click", () => {
-    reviewItem.classList.toggle("is-flipped"); // Переворачиваем карточку на заднюю сторону
+    reviewItem.classList.toggle("is-flipped"); // flip back the card to view description
   });
 
   buttonBack.addEventListener("click", () => {
-    reviewItem.classList.toggle("is-flipped"); // Переворачиваем карточку обратно на переднюю сторону
+    reviewItem.classList.toggle("is-flipped"); // flip card to the front 
   });
 }
 
-// Функция для получения карточки ревью
+// review display function
 function getCard(review) {
   const reviewItem = reviewTemplate
     .querySelector(".review_box")
@@ -81,16 +81,16 @@ function getCard(review) {
   reviewAuthor.textContent = review.author;
   reviewDescription.textContent = review.description;
 
-  // Установка рейтинга
+  // set up rating
   rateStars(ratingStars, review);
 
-  // Переворачием карточку ревью
+  // flip review card
   reviewFlip(reviewItem);
 
   return reviewItem;
 }
 
-// Заполнение рейтинга в форме
+// submit rating
 ratingStars.forEach((star) => {
   star.addEventListener("click", () => {
     starRate = star.dataset.value;
@@ -117,58 +117,58 @@ ratingStars.forEach((star) => {
   });
 });
 
-// Функция для создания карточки ревью
+// create a new review 
 function createReview(name, description, image, author, rating) {
   const reviewItem = getCard({ name, description, image, author, rating });
-  reviewsList.prepend(reviewItem); // Добавляем карточку на страницу
+  reviewsList.prepend(reviewItem); // add card to page
 }
 
-// Функция для сохранения и получения ревью в localStorage
+// function for setting and getting items from localStorage 
 function saveReview(name, description, image, author, rating) {
-  const reviews = JSON.parse(localStorage.getItem("reviews")) || []; // Получаем ревью из localStorage или создаем новый массив при их отсутствии в хранилище
+  const reviews = JSON.parse(localStorage.getItem("reviews")) || []; // get reviews from localStorage or get empty array if storage is empty
   reviews.push({ name, description, image, author, rating });
   localStorage.setItem("reviews", JSON.stringify(reviews));
 }
 
-// Заполнение формы "Add book"
+// submiting form through "Add book"
 reviewForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  // Получаем значения из полей
+  // get values from inputs
   const title = document.getElementById("title").value;
   const description = document.getElementById("description").value;
   const author = document.getElementById("author").value;
   const image = document.getElementById("image");
-  const defaultImage = "https://i.ibb.co/FgxX4ZJ/no-book-cover.jpg"; // Изображение "No book cover"
+  const defaultImage = "https://i.ibb.co/FgxX4ZJ/no-book-cover.jpg"; // displays "No book cover"
 
   const setImage = (imageUrl) => {
-    createReview(title, description, imageUrl, author, starRate); // Создаем карточку
-    saveReview(title, description, imageUrl, author, starRate); // Сохраняем в localStorage
+    createReview(title, description, imageUrl, author, starRate); // create review card 
+    saveReview(title, description, imageUrl, author, starRate); // save to localStorage
   };
 
   if (image.files.length > 0) {
     const file = image.files[0];
-    const reader = new FileReader(); // Чтение содержимого файла с помощью экзмепляра FileReader
-    reader.onload = () => setImage(reader.result); // Чтение файла закончилось, получаем результат
-    reader.onerror = () => setImage(defaultImage); // При ошибке чтения файла устанавливаем изображение "No book cover"
-    reader.readAsDataURL(file); // Чтение содержимого file в формате Data URL
+    const reader = new FileReader(); // reading file's contents with FileReader
+    reader.onload = () => setImage(reader.result); // file reading complete, get result
+    reader.onerror = () => setImage(defaultImage); // in case of error, image is set to "No book cover"
+    reader.readAsDataURL(file); // file's contents in Data URL format
   } else {
-    setImage(defaultImage); // Устанавливаем изображение "No book cover", если пользователь не добавил его в форму
+    setImage(defaultImage); // set "No book cover", if user did not upload an image 
   }
 
   formModal.style.display = "none";
-  reviewForm.reset(); // Ресет формы после закрытия
+  reviewForm.reset(); // form reset after closing
 });
 
 window.onload = () => {
-  // Ждем полной загрузки страницы с помощью обработчика onload
-  const reviewStorage = JSON.parse(localStorage.getItem("reviews")) || []; // Если данных нет, возвращаем пустой массив
+  // wait for page to upload completely using onload
+  const reviewStorage = JSON.parse(localStorage.getItem("reviews")) || []; // return empty array if there is no content in localStorage
   reviewStorage.forEach(({ name, description, image, author, rating }) => {
     createReview(name, description, image, author, rating);
   });
 };
 
-// Ресет рейтинга в форме
+// rating reset 
 function resetRating() {
   starRate = 0;
   ratingStars.forEach((star) => {
@@ -176,18 +176,18 @@ function resetRating() {
   });
 }
 
-// Открытие модального окна
+// modal open function
 addButton.addEventListener("click", () => {
   formModal.style.display = "block";
   resetRating();
 });
 
-// Закрытие модального окна
+// modal close function
 closeButton.addEventListener("click", () => {
   formModal.style.display = "none";
 });
 
-// Закрытие модального окна по клавише Esc
+// modal close function (using "esc")
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     formModal.style.display = "none";

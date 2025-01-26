@@ -1,28 +1,28 @@
-# LitCritique (пет-проект)
+# LitCritique (pet-project)
 
-Данный проект является интерактивной страницей для загрузки рецензий книг. Пользователь может заполнить форму о его любимой книге: ввести название и автора произведения, дать развернутое ревью, загрузить фотографию книги, и поставить ей оценку от 1 до 5 звезд.
+The project is an interactive webpage for uploading book reviews. Users can fill out a form about their favourite books: title, author, a detailed review and a 1 to 5 star rating of the novel. The reviews are displayed on the page in a list.
 
-## Репозиторий проекта
+## Repository
 https://github.com/elienture/LitCritique
 
-## Сборка
+## Build
 ```
 npm run build
 ```
 
-## Деплой проекта 
+## Deploy
 https://elienture.github.io/LitCritique/
 
-## Технологии
+## Tools
 - HTML5
 - CSS
 - JavaScript
 - Webpack 
 
-## Источники
-[Иконки](https://tabler.io/icons)
+## Sources
+[Icons](https://tabler.io/icons)
 
-## Автор
+## Author
 elienture
 Elizaveta N.
-[Ссылка на старницу Github](https://github.com/elienture)
+[github link](https://github.com/elienture)
